@@ -11,11 +11,9 @@ function randomNumberGenerator() {
 }
 
 randomNumberGenerator();
-console.log(secretNumber);
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess);
   if (!guess) {
     document.querySelector('.message').textContent = '⛔️ No Number!';
   } else if (guess === secretNumber) {
@@ -73,7 +71,6 @@ document.querySelector('.check').addEventListener('click', function () {
 
 document.querySelector('.again').addEventListener('click', function () {
   randomNumberGenerator();
-  console.log(secretNumber);
   score = 20;
   const guess = (document.querySelector('.guess').value = ' ');
 
