@@ -34,38 +34,15 @@ document.querySelector('.check').addEventListener('click', function () {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
     }
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 0) {
-      document.querySelector('.message').textContent = '📈 Too high!';
       score--;
       document.querySelector('.score').textContent = score;
-
       // Change MESSAGE FONT-SIZE
       document.querySelector('.message').style.fontSize = '4rem';
     }
-  } else if (guess < secretNumber) {
-    if (score > 0) {
-      document.querySelector('.message').textContent = '📉 Too low!';
-      score--;
-      document.querySelector('.score').textContent = score;
-
-      // Change MESSAGE FONT-SIZE
-      document.querySelector('.message').style.fontSize = '4rem';
-    }
-  }
-
-  if (score === 0) {
-    document.querySelector('.message').textContent = '💥 You lost the game';
-    // Change MESSAGE FONT-SIZE
-    document.querySelector('.message').style.fontSize = '4rem!important';
-    // CHANGE BACKGROUND COLOR IF WIN
-    document.querySelector('body').style.backgroundColor = '#FF1E1E';
-    document.querySelector('.score-paragraphs').style.display = 'none';
-    // CHANGE WIDTH OF NUMBER DIV
-    document.querySelector('.number').style.width = '30rem';
-    // SHOW NUMBER IF NUMBER IS CORRECT NUMBER
-    document.querySelector('.number').textContent = `${secretNumber}`;
-    document.querySelector('.check').style.display = 'none';
+    document.querySelector('.message').textContent =
+      guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
   }
 });
 
