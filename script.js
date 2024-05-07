@@ -1,23 +1,19 @@
 'use strict';
 
 // document.querySelector('.number').textContent = `${secretNumber}`;
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-console.log(secretNumber);
+let secretNumber;
 let score = 20;
 let highscore = 0;
 
+function randomNumberGenerator() {
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  return secretNumber;
+}
 
-
-
-
-
-
-
-
-
+randomNumberGenerator();
+console.log(secretNumber);
 
 document.querySelector('.check').addEventListener('click', function () {
-
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
   if (!guess) {
@@ -36,12 +32,10 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.number').textContent = `${secretNumber}`;
     document.querySelector('.check').style.display = 'none';
 
-    if (score > highscore){
+    if (score > highscore) {
       highscore = score;
-      document.querySelector('.highscore').textContent = highscore
+      document.querySelector('.highscore').textContent = highscore;
     }
-
-
   } else if (guess > secretNumber) {
     if (score > 0) {
       document.querySelector('.message').textContent = '📈 Too high!';
@@ -78,6 +72,8 @@ document.querySelector('.check').addEventListener('click', function () {
 });
 
 document.querySelector('.again').addEventListener('click', function () {
+  randomNumberGenerator();
+  console.log(secretNumber);
   score = 20;
   const guess = (document.querySelector('.guess').value = ' ');
 
