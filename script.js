@@ -18,7 +18,7 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = '⛔️ No Number!';
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎉 You did it!';
-    score++;
+    
     document.querySelector('.score').textContent = score;
     // CHANGE BACKGROUND COLOR IF WIN
     document.querySelector('body').style.backgroundColor = '#4CCD99';
