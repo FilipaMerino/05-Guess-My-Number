@@ -10,15 +10,18 @@ function randomNumberGenerator() {
   return secretNumber;
 }
 
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
 randomNumberGenerator();
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   if (!guess) {
-    document.querySelector('.message').textContent = '⛔️ No Number!';
+    displayMessage('⛔️ No Number!');
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = '🎉 You did it!';
-    
+    displayMessage('🎉 You did it!');
     document.querySelector('.score').textContent = score;
     // CHANGE BACKGROUND COLOR IF WIN
     document.querySelector('body').style.backgroundColor = '#4CCD99';
@@ -41,8 +44,7 @@ document.querySelector('.check').addEventListener('click', function () {
       // Change MESSAGE FONT-SIZE
       document.querySelector('.message').style.fontSize = '4rem';
     }
-    document.querySelector('.message').textContent =
-      guess > secretNumber ? '📈 Too high!' : '📉 Too low!';
+    displayMessage(guess > secretNumber ? '📈 Too high!' : '📉 Too low!');
   }
 });
 
@@ -50,9 +52,8 @@ document.querySelector('.again').addEventListener('click', function () {
   randomNumberGenerator();
   score = 20;
   const guess = (document.querySelector('.guess').value = ' ');
-
+  displayMessage('Start guessing...');
   document.querySelector('.score').textContent = 20;
-  document.querySelector('.message').textContent = 'Start guessing...';
   document.querySelector('.message').style.fontSize = '20px';
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.score-paragraphs').style.display = 'block';
